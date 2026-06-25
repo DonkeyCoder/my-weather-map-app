@@ -1,0 +1,230 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+#mapElement {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 75%;
+}
+
+#chart-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+}
+
+/*
+#chart-title {
+  position: absolute;
+  color: rgba(0, 150, 255);
+  font-weight: bold;
+  z-index: 200;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24%;
+  background-color: white;
+  padding: 0 8px 0 8px;
+  border-radius: 5px;
+}
+  */
+
+.compare-buttons {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 8px;
+}
+
+#compare-rain {
+  display: none;
+  z-index: 200;
+
+  color: rgb(48, 48, 48);
+  background-color: white;
+  border-radius: 10px;
+  border: solid black 1px;
+  padding: 0 8px 0 8px;
+  justify-content: center; /* horizontal */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#compare-history {
+  display: none;
+  z-index: 200;
+
+  color: rgb(48, 48, 48);
+  background-color: white;
+  border-radius: 10px;
+  border: solid black 1px;
+  padding: 0 8px 0 8px;
+  justify-content: center; /* horizontal */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#compare-rain:hover,
+#compare-history:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#location-label {
+  position: absolute;
+  z-index: 200;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 16px;
+  color: rgb(48, 48, 48);
+  background-color: white;
+  border-radius: 10px;
+  border: solid black 1px;
+  padding: 0 8px 0 8px;
+  font-size: 1em;
+
+  display: flex;
+  justify-content: center; /* horizontal */
+
+  white-space: nowrap;
+}
+
+.location-current {
+  color: rgba(0, 150, 255);
+}
+
+.location-previous {
+  color: rgba(150, 0, 255);
+}
+
+.time-period-buttons {
+  position: absolute;
+  display: none;
+  margin-left: 4px;
+  bottom: 28%;
+  left: 0;
+}
+
+.time-period-buttons a {
+  position: relative;
+  z-index: 500;
+
+  background-color: #ffffff;
+  color: #333333;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  /*
+  REFLECTION
+  -webkit-box-reflect: below 2px
+    linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+*/
+  margin: 0 4px 0 4px;
+}
+
+.time-period-buttons a:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* --- MOBILE FIRST IMPROVEMENTS --- */
+@media (max-width: 768px) {
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* Map takes ~60% of screen on mobile */
+  #mapElement {
+    height: 60%;
+  }
+
+  /* Chart gets more space on small screens */
+  #chart-container {
+    height: 40%;
+  }
+
+  /* Buttons reposition to avoid overlap */
+  #compare-rain,
+  #compare-history {
+    right: 8px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+
+  #compare-rain {
+    bottom: 42%;
+  }
+
+  #compare-history {
+    bottom: 36%;
+  }
+
+  /* Location label centered but smaller */
+  #location-label {
+    top: 16px;
+    bottom: auto; /* <-- THIS is the missing piece */
+    left: 20%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  /* Time period buttons become a horizontal bar */
+  .time-period-buttons {
+    position: absolute;
+    bottom: 36%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+  }
+
+  .time-period-buttons a {
+    width: 38px;
+    height: 38px;
+    font-size: 0.7rem;
+    border-radius: 50%;
+  }
+}
+
+/* --- VERY SMALL DEVICES (iPhone SE, older Androids) --- */
+@media (max-width: 480px) {
+  #mapElement {
+    height: 55%;
+  }
+
+  #chart-container {
+    height: 45%;
+  }
+
+  #compare-rain,
+  #compare-history {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+
+  .time-period-buttons a {
+    width: 34px;
+    height: 34px;
+    font-size: 0.65rem;
+  }
+}

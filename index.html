@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
+    <script type="module" src="https://js.arcgis.com/5.0/"></script>
+    <!-- Load the Chart.js library for dynamic charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="./main.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Add a Map Component -->
+    <arcgis-map id="mapElement" ground="world-elevation">
+      <div class="time-period-buttons" slot="bottom-left">
+        <a id="seven-days">7 day</a>
+        <a id="one-month">1 mth</a>
+        <a id="six-months">6 mth</a>
+        <a id="one-year">1 yr</a>
+        <a id="two-years">2 yr</a>
+        <a id="three-years">3 yr</a>
+      </div>
+      <div class="compare-buttons" slot="bottom-right">
+        <a id="compare-rain">7 day forecast comparison</a>
+        <a id="compare-history">Historic weather comparison</a>
+      </div>
+    </arcgis-map>
+    <!--p id="chart-title">7 day rain forcast</p-->
+    <div id="chart-container">
+      <canvas id="temperatureChart"></canvas>
+    </div>
+  </body>
+</html>
